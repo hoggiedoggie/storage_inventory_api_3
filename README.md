@@ -4,7 +4,7 @@
 - Многопользовательская архитектура с защитой данных на уровне владельца (Ownership) и безопасной сессионной авторизацией.
 - Технологический стек Backend: Python 3.13 + FastAPI.Database: PostgreSQL + SQLAlchemy (ORM).Migrations: Alembic.
 - Security: JWT (JSON Web Tokens), Bcrypt (хеширование паролей).DevOps: Docker + Docker Compose.
-## Структура проектаPlaintext.
+## Структура проекта.
 ```
 ├── app/ 
 │   ├── api/ 
