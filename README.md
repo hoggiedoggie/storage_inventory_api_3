@@ -6,25 +6,37 @@
 - Security: JWT (JSON Web Tokens), Bcrypt (хеширование паролей).DevOps: Docker + Docker Compose.
 ## Структура проекта.
 ```
-├── app/ 
-│   ├── api/ 
-│   │   ├── deps.py             # Зависимости (проверка JWT + получение текущего юзера) 
-│   │   └── v1/ 
-│   │       └── endpoints/      # Обработчики API (auth.py/storage.py) 
-│   ├── core/ 
-│   │   ├── config.py           # Настройки проекта (Pydantic Settings + .env) 
-│   │   └── security.py         # Логика хеширования и генерации токенов 
-│   ├── db/ 
-│   │   ├── base.py             # Сборка всех моделей для Alembic 
-│   │   └── session.py          # Настройка подключения к БД 
-│   ├── models/                 # SQLAlchemy модели (User, StorageDevice) 
-│   ├── schemas/                # Pydantic схемы (валидация данных) 
-│   ├── services/               # Бизнес-логика (CRUD операции) 
-│   └── main.py                 # Точка входа в приложение 
-├── alembic/                    # История миграций базы данных 
-├── docker-compose.yml          # Оркестрация контейнеров 
-├── Dockerfile                  # Инструкции сборки образа 
-└── .env                        # Секретные ключи и настройки БД 
+storage_inventory_api/
+├── alembic/                # Миграции базы данных (версии таблиц)
+├── app/
+│   ├── api/                # Слой обработки запросов (FastAPI)
+│   │   ├── v1/
+│   │   │   ├── endpoints/
+│   │   │   │   ├── auth.py     # Регистрация, логин, логаут
+│   │   │   │   └── storage.py  # CRUD для твоих дисков (get, post, delete...)
+│   │   │   └── api.py          # Сборщик всех роутеров в один
+│   │   └── deps.py             # Тот самый "охранник" (get_current_user)
+│   ├── core/               # Конфиги и безопасность
+│   │   ├── config.py           # Настройки проекта
+│   │   └── security.py         # Хеширование паролей и работа с JWT
+│   ├── db/                 # Подключение к БД
+│   │   ├── base.py             # Импорт всех моделей для Alembic
+│   │   └── session.py          # Создание сессии SQLAlchemy
+│   ├── models/             # Таблицы базы данных (SQLAlchemy)
+│   │   ├── user.py             # Таблица пользователей
+│   │   └── storage.py          # Таблица твоих железок/дисков
+│   ├── schemas/            # Валидация данных (Pydantic)
+│   │   ├── user.py             # Схемы для юзеров
+│   │   ├── storage.py          # Схемы для дисков (что можно слать в POST/PATCH)
+│   │   └── token.py            # Схемы для JWT ответов
+│   ├── services/           # Бизнес-логика (самый важный слой)
+│   │   ├── user.py             # Логика работы с юзерами
+│   │   └── storage.py          # Логика работы с хранилищем (get_multi_by_owner и т.д.)
+│   └── main.py             # Точка входа в приложение
+├── .env                    # Секреты (пароли БД, ключи JWT)
+├── docker-compose.yml      # Описание контейнеров (App + Postgres)
+├── Dockerfile              # Инструкция по сборке образа
+└── requirements.txt        # Список библиотек
 ```
 ## Быстрый запуск
 ### 1. Сборка и запуск контейнеров
