@@ -91,7 +91,7 @@ docker-compose exec db psql -U postgres -d inventory_db -c "\dt"
 
 2. Авторизация (Логин)
 
-###POST /api/v1/auth/login
+### POST /api/v1/auth/login
 Сервер проверяет учетные данные и устанавливает HttpOnly Cookie access_token.
 ```
 {
