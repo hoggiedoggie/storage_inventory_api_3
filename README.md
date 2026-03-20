@@ -1,8 +1,8 @@
-# 📦 Storage Inventory API (Lab #3)
+## 📦 Storage Inventory API (Lab #3)
 
 Профессиональная система инвентаризации накопителей (HDD/SSD). Реализована многопользовательская архитектура с защитой данных на уровне владельца (Ownership) и безопасной сессионной авторизацией через JWT.
 
-# 🛠 Технологический стек
+## 🛠 Технологический стек
 
 Backend: Python 3.13 + FastAPI.
 
@@ -14,7 +14,7 @@ Security: JWT (JSON Web Tokens), Bcrypt (хеширование паролей).
 
 DevOps: Docker + Docker Compose.
 
-# 📂 Структура проекта
+## 📂 Структура проекта
 ```
 storage_inventory_api/
 ├── alembic/                # Миграции базы данных (версии таблиц)
@@ -49,7 +49,7 @@ storage_inventory_api/
 └── requirements.txt        # Список библиотек
 ```
 
-# 🚀 Быстрый запуск
+## 🚀 Быстрый запуск
 
 1. Сборка и запуск контейнеров
 ```
@@ -77,7 +77,7 @@ docker-compose exec app alembic upgrade head
 docker-compose exec db psql -U postgres -d inventory_db -c "\dt"
 ```
 
-# 🔐 Примеры использования API
+## 🔐 Примеры использования API
 
 1. Регистрация пользователя
 
@@ -113,7 +113,7 @@ docker-compose exec db psql -U postgres -d inventory_db -c "\dt"
 }
 ```
 
-# 🛡 Безопасность и Особенности
+## 🛡 Безопасность и Особенности
 
 HttpOnly Cookies: Токены защищены от кражи через JavaScript (защита от XSS-атак).
 
@@ -123,7 +123,7 @@ UUID Идентификаторы: Используются UUID для защи
 
 Bcrypt Hashing: Пароли хранятся в виде защищенных хэшей с солью.
 
-# 📋 Полезные команды
+## 📋 Полезные команды
 
 Просмотр логов: docker-compose logs -f app
 
